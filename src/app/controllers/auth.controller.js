@@ -43,9 +43,9 @@ const authController = {
   // login
   async loginUser(req, res) {
     try {
-      const user = await User.findOne({ username: req.body.username });
+      const user = await User.findOne({ email: req.body.email });
       if (!user) {
-        res.status(404).json("Wrong username");
+        res.status(404).json("Wrong email");
       }
       const validPassword = await bcrypt.compare(
         req.body.password,
